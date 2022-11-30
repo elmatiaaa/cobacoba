@@ -36,7 +36,8 @@ with tab2:
    
 
     st.write(" ## Normalisasi")
-le = preprocessing.LabelEncoder()
+def convert_categorical_to_dummy(columns, dataframe):
+    le = preprocessing.LabelEncoder()
 
     for col in columns:
         n = len(dataframe[col].unique())
