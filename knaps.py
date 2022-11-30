@@ -52,7 +52,7 @@ with tab3:
       acc_knn = round(knn.score(x_train, y_train) * 100, 2)
       label_knn = pd.DataFrame(
       data={'Label Test': y_test, 'Label Predict': y_pred_knn}).reset_index()
-      st.success(f'Tingkat akurasi = {acc_knn}')
+      st.success(f'Tingkat akurasi = {acc_knn}') 
       st.dataframe(label_knn)
 
     with naivebayes:
