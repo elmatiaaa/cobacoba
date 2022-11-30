@@ -116,3 +116,84 @@ with tab3:
         )
 
         st.altair_chart(bar_chart,use_container_width=True)
+        
+with tab4:
+    st.write("# Implementation")
+    fixed_acidity = st.number_input('Masukkan Umur Pasien')
+
+    # GENDER
+    volatile_acidity = st.number_input('')
+    citric_acid= st.number_input('')
+    residual_sugar = st.number_input('')
+    chlorides = st.number_input('')
+    free_sulfur_dioxide = st.number_input('')
+    total_sulfur_dioxide = st.number_input('')
+    density = st.number_input('')
+    pH = st.number_input('')
+    sulphates = st.number_input('')
+    alcohol = st.number_input('')
+    quality = st.number_input('')
+
+
+    
+    # Sex = st.radio(
+    # "Masukkan Jenis Kelamin Anda",
+    # ('Laki-laki','Perempuan'))
+    # if Sex == "Laki-laki":
+    #     Sex_Female = 0
+    #     Sex_Male = 1
+    # elif Sex == "Perempuan" :
+    #     Sex_Female = 1
+    #     Sex_Male = 0
+
+    # BP = st.radio(
+    # "Masukkan Tekanan Darah Anda",
+    # ('Tinggi','Normal','Rendah'))
+    # if BP == "Tinggi":
+    #     BP_High = 1
+    #     BP_LOW = 0
+    #     BP_NORMAL = 0
+    # elif BP == "Normal" :
+    #     BP_High = 0
+    #     BP_LOW = 0
+    #     BP_NORMAL = 1
+    # elif BP == "Rendah" :
+    #     BP_High = 0
+    #     BP_LOW = 1
+    #     BP_NORMAL = 0
+
+    # Cholesterol = st.radio(
+    # "Masukkan Kadar Kolestrol Anda",
+    # ('Tinggi','Normal'))
+    # if Cholesterol == "Tinggi" :
+    #     Cholestrol_High = 1
+    #     Cholestrol_Normal = 0 
+    # elif Cholesterol == "Normal":
+    #     Cholestrol_High = 0
+    #     Cholestrol_Normal = 1
+        
+    # Na_to_K = st.number_input('Masukkan Rasio Natrium Ke Kalium dalam Darah')
+
+
+
+    def submit():
+        # input
+        inputs = np.array([[
+            fixed_acidity,volatile_acidity,citric_acid,residual_sugar,chlorides,ree_sulfur_dioxide,total_sulfur_dioxide,density,pH,sulphates,alcohol,quality
+            ]])
+        # st.write(inputs)
+        # baru = pd.DataFrame(inputs)
+        # input = pd.get_dummies(baru)
+        # st.write(input)
+        # inputan = np.array(input)
+        # import label encoder
+        le = joblib.load("le.save")
+        model1 = joblib.load("knn.joblib")
+        y_pred3 = model1.predict(inputs)
+        st.write(f"Berdasarkan data yang Anda masukkan, maka anda dinyatakan : {le.inverse_transform(y_pred3)[0]}")
+
+    all = st.button("Submit")
+    if all :
+        st.balloons() 
+        submit()
+
