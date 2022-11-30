@@ -119,20 +119,20 @@ with tab3:
         
 with tab4:
     st.write("# Implementation")
-    fixed_acidity = st.text_input('Masukkan Umur Pasien')
+    fixed_acidity = st.text_input('fixed acidity :')
 
     # GENDER
-    volatile_acidity = st.text_input('GHGKJBLKNK')
-    citric_acid= st.text_input('')
-    residual_sugar = st.text_input('')
-    chlorides = st.text_input('')
-    free_sulfur_dioxide = st.text_input('')
-    total_sulfur_dioxide = st.text_input('')
-    density = st.text_input('')
-    pH = st.text_input('')
-    sulphates = st.text_input('')
-    alcohol = st.text_input('')
-    quality = st.text_input('')
+    volatile_acidity = st.text_input('volatile_acidity :')
+    citric_acid = st.text_input('citric_acid :')
+    residual_sugar = st.text_input('residual_sugar :')
+    chlorides = st.text_input('chlorides :')
+    free_sulfur_dioxide = st.text_input('free sulfur dioxide :')
+    total_sulfur_dioxide = st.text_input('total sulfur dioxide :')
+    density = st.text_input('density :')
+    pH = st.text_input('pH :')
+    sulphates = st.text_input('sulphates :')
+    alcohol = st.text_input('alcohol :')
+    quality = st.text_input('quality :')
 
 
     
