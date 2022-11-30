@@ -122,7 +122,7 @@ with tab4:
     fixed_acidity = st.number_input('Masukkan Umur Pasien')
 
     # GENDER
-    volatile_acidity = st.number_input('')
+    volatile_acidity = st.number_input('GHGKJBLKNK')
     citric_acid= st.number_input('')
     residual_sugar = st.number_input('')
     chlorides = st.number_input('')
