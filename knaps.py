@@ -34,34 +34,5 @@ with tab2:
     
 
 
-def convert_categorical_to_dummy(columns, dataframe):
-    """
-    Converts categorical columns to binary, results in n-1 columns,
-    where n is the number of possible category values.
-    """
-    le = preprocessing.LabelEncoder()
-
-    for col in columns:
-        n = len(dataframe[col].unique())
-        if n > 2:
-            X = pd.get_dummies(dataframe[col])
-            X = X.drop(X.columns[0], axis=1)
-            dataframe[X.columns] = X
-            dataframe.drop(col, axis=1, inplace=True)  # drop the original categorical variable (optional)
-        else:
-            le.fit(dataframe[col])
-            dataframe[col] = le.transform(dataframe[col])
-pre_dummy_column = wine["quality"].copy()
-pre_dummy_column = pre_dummy_column.rename("quality (pre dummy)")
-
-categorical_columns = wine.select_dtypes(['category']).columns
-convert_categorical_to_dummy(categorical_columns, wine)
-
-post_dummy_column = wine["quality"].copy()
-post_dummy_column = post_dummy_column.rename("quality (post dummy)")
-
-pd.concat([pre_dummy_column, post_dummy_column], axis=1)
-
-   
 
    
