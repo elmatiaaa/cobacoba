@@ -23,8 +23,8 @@ tab1, tab2, tab3, tab4 = st.tabs(["Import Data", "Preprocessing", "Modelling", "
 
 with tab1:
     st.write("Import Data")
-    data = pd.read_csv("https://raw.githubusercontent.com/elmatiaaa/Machine-Learning/main/winequality-red.csv")
-    st.dataframe(data)
+    wine = pd.read_csv("https://raw.githubusercontent.com/elmatiaaa/Machine-Learning/main/winequality-red.csv")
+    st.dataframe(wine)
 
 with tab2:
     quality_series = wine.loc[:, "quality"]
