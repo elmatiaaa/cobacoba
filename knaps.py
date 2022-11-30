@@ -21,16 +21,16 @@ st.write("======================================================================
 
 tab1, tab2, tab3, tab4 = st.tabs(["Import Data", "Preprocessing", "Modelling", "Evalutions"])
 
-with tab1:
-    st.write("Import Data")
-    wine = pd.read_csv("https://raw.githubusercontent.com/elmatiaaa/Machine-Learning/main/winequality-red.csv")
-    st.dataframe(wine)
+    with tab1:
+        st.write("Import Data")
+        wine = pd.read_csv("https://raw.githubusercontent.com/elmatiaaa/Machine-Learning/main/winequality-red.csv")
+        st.dataframe(wine)
 
-with tab2:
-    quality_series = wine.loc[:, "quality"]
-    quality_categorical_series = pd.cut(quality_series, [0, 5, 10], labels=["bad", "good"])
-    wine["quality"] = quality_categorical_series
-    wine
+    with tab2:
+        quality_series = wine.loc[:, "quality"]
+        quality_categorical_series = pd.cut(quality_series, [0, 5, 10], labels=["bad", "good"])
+        wine["quality"] = quality_categorical_series
+        wine
     
 
 with modeling:
