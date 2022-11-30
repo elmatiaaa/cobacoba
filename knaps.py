@@ -32,11 +32,7 @@ with tab2:
     wine["quality"] = quality_categorical_series
     wine
     
-    pd.set_option('max_columns', None)
-    pd.options.display.float_format = "{:.3f}".format
-    wine.describe()
-    
-    from sklearn import preprocessing
+
 
 def convert_categorical_to_dummy(columns, dataframe):
     """
