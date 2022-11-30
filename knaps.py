@@ -34,7 +34,7 @@ with tab2:
     data
     
     x=data[["fixed acidity","volatile acidity","citric acid","residual sugar","chlorides","free sulfur dioxide","total sulfur dioxide","density","pH","sulphates","alcohol"]]
-    y=data[quality].values
+    y=data["quality"].values
     
     scaler = preprocessing.MinMaxScaler(feature_range=(0,1))
     x_scaled= scaler.fit_transform(x)
