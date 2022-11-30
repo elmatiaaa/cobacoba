@@ -20,7 +20,11 @@ st.write("""
 st.write("=========================================================================")
 
 tab1, tab2, tab3, tab4 = st.tabs(["Import Data", "Preprocessing", "Modelling", "Evalutions"])
-
+with dataframe:
+    st.write('Data Jamur')
+    dataset,data= st.tabs(['Dataset',"data"])
+    with dataset:
+        st.dataframe(df)
     with tab1:
         st.write("Import Data")
         wine = pd.read_csv("https://raw.githubusercontent.com/elmatiaaa/Machine-Learning/main/winequality-red.csv")
