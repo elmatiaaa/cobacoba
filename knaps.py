@@ -35,15 +35,16 @@ with tab2:
     
 
 with tab3:
-    X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.2,random_state=4)
+    x_train, x_test,y_train,y_test= train_test_split(x,y,random_state=0)    
+    x_train_scaled, x_test_scaled,y_train_scaled,y_test_scaled= train_test_split(x_scaled,y,random_state=0)
     from sklearn.preprocessing import StandardScaler
     sc = StandardScaler()
-    X_train = sc.fit_transform(X_train)
-    X_test = sc.transform(X_test)
+    x_train = sc.fit_transform(x_train)
+    x_test = sc.transform(x_test)
     # from sklearn.feature_extraction.text import CountVectorizer
     # cv = CountVectorizer()
-    # X_train = cv.fit_transform(X_train)
-    # X_test = cv.fit_transform(X_test)
+    # x_train = cv.fit_transform(x_train)
+    # x_test = cv.fit_transform(x_test)
     st.write("""# Modeling """)
     st.subheader("Berikut ini adalah pilihan untuk Modeling")
     st.write("Pilih Model yang Anda inginkan untuk Cek Akurasi")
@@ -51,37 +52,37 @@ with tab3:
     kn = st.checkbox('K-Nearest Neighbor')
     des = st.checkbox('Decision Tree')
     mod = st.button("Modeling")
-
+    
     # NB
     GaussianNB(priors=None)
 
     # Fitting Naive Bayes Classification to the Training set with linear kernel
     nvklasifikasi = GaussianNB()
-    nvklasifikasi = nvklasifikasi.fit(X_train, y_train)
+    nvklasifikasi = nvklasifikasi.fit(x_train, y_train)
 
     # Predicting the Test set results
-    y_pred = nvklasifikasi.predict(X_test)
+    y_pred = nvklasifikasi.predict(x_test)
     
     y_compare = np.vstack((y_test,y_pred)).T
-    nvklasifikasi.predict_proba(X_test)
+    nvklasifikasi.predict_proba(x_test)
     akurasi = round(100 * accuracy_score(y_test, y_pred))
     # akurasi = 10
 
     # KNN 
     K=10
     knn=KNeighborsClassifier(n_neighbors=K)
-    knn.fit(X_train,y_train)
-    y_pred=knn.predict(X_test)
+    knn.fit(x_train,y_train)
+    y_pred=knn.predict(x_test)
 
     skor_akurasi = round(100 * accuracy_score(y_test,y_pred))
 
     # DT
 
     dt = DecisionTreeClassifier()
-    dt.fit(X_train, y_train)
+    dt.fit(x_train, y_train)
     # prediction
-    dt.score(X_test, y_test)
-    y_pred = dt.predict(X_test)
+    dt.score(x_test, y_test)
+    y_pred = dt.predict(x_test)
     #Accuracy
     akurasiii = round(100 * accuracy_score(y_test,y_pred))
 
@@ -107,4 +108,5 @@ with tab3:
             y = 'Nilai Akurasi',
             x = 'Nama Model'
         )
-   
+
+        st.altair_chart(bar_chart,use_container_width=True)
