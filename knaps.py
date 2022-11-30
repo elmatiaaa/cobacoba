@@ -39,6 +39,7 @@ with tab2:
     scaler = preprocessing.MinMaxScaler(feature_range=(0,1))
     x_scaled= scaler.fit_transform(x)
     x_scaled
+    
 with tab3:
     x_train, x_test,y_train,y_test= train_test_split(x,y,random_state=0)    
     x_train_scaled, x_test_scaled,y_train_scaled,y_test_scaled= train_test_split(x_scaled,y,random_state=0)
