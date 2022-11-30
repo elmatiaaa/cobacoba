@@ -194,6 +194,6 @@ with tab4:
 
     all = st.button("Submit")
     if all :
-        st.balloons() 
+        st.balloons()  
         submit()
 
