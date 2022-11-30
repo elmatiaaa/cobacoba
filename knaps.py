@@ -36,9 +36,10 @@ with tab2:
     x=data[["fixed acidity","volatile acidity","citric acid","residual sugar","chlorides","free sulfur dioxide","total sulfur dioxide","density","pH","sulphates","alcohol"]]
     y=data["quality"].values
     
-    scaler = preprocessing.MinMaxScaler(feature_range=(0,1))
-    x_scaled= scaler.fit_transform(x)
-    x_scaled
+    scaler = MinMaxScaler()
+    scaler.fit(x)
+    x=scaler.transform(x)
+    x
     
 with tab3:
     x_train, x_test,y_train,y_test= train_test_split(x,y,random_state=0)    
