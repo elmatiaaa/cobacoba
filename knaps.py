@@ -27,16 +27,22 @@ with tab1:
     st.dataframe(data)
 
 with tab2:
-    data.head()
+    quality_series = wine.loc[:, "quality"]
+    quality_categorical_series = pd.cut(quality_series, [0, 5, 10], labels=["bad", "good"])
+    wine["quality"] = quality_categorical_series
+    wine
+    
+    pd.set_option('max_columns', None)
+    pd.options.display.float_format = "{:.3f}".format
+    wine.describe()
+    
+    from sklearn import preprocessing
 
-    X = data.drop(columns=["citric.acid","chorides","density","sulphates"])
-
-    X.head()
-
-   
-
-    st.write(" ## Normalisasi")
 def convert_categorical_to_dummy(columns, dataframe):
+    """
+    Converts categorical columns to binary, results in n-1 columns,
+    where n is the number of possible category values.
+    """
     le = preprocessing.LabelEncoder()
 
     for col in columns:
@@ -49,16 +55,17 @@ def convert_categorical_to_dummy(columns, dataframe):
         else:
             le.fit(dataframe[col])
             dataframe[col] = le.transform(dataframe[col])
+pre_dummy_column = wine["quality"].copy()
+pre_dummy_column = pre_dummy_column.rename("quality (pre dummy)")
 
-            pre_dummy_column = wine["quality"].copy()
-            pre_dummy_column = pre_dummy_column.rename("quality (pre dummy)")
+categorical_columns = wine.select_dtypes(['category']).columns
+convert_categorical_to_dummy(categorical_columns, wine)
 
-            categorical_columns = wine.select_dtypes(['category']).columns
-            convert_categorical_to_dummy(categorical_columns, wine)
+post_dummy_column = wine["quality"].copy()
+post_dummy_column = post_dummy_column.rename("quality (post dummy)")
 
-            post_dummy_column = wine["quality"].copy()
-            post_dummy_column = post_dummy_column.rename("quality (post dummy)")
+pd.concat([pre_dummy_column, post_dummy_column], axis=1)
 
-            pd.concat([pre_dummy_column, post_dummy_column], axis=1)
+   
 
-  
+   
