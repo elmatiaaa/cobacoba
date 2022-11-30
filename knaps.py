@@ -35,11 +35,11 @@ with tab2:
     
 
 with tab3:
-    X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.2,random_state=4)
+    x_train,x_test,y_train,y_test = train_test_split(x,y,test_size=0.2,random_state=4)
     from sklearn.preprocessing import StandardScaler
     sc = StandardScaler()
-    X_train = sc.fit_transform(X_train)
-    X_test = sc.transform(X_test)
+    x_train = sc.fit_transform(x_train)
+    x_test = sc.transform(x_test)
     # pisahkan fitur dan label
     knn,naivebayes,decisiontree= st.tabs(
         ["K-Nearest Neighbor","naivebayes","decisiontree"])
