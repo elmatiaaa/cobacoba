@@ -16,7 +16,7 @@ from sklearn.svm import SVC
 
 
 st.write(""" 
-# Cek data
+# Project Data Mining
 """)
 
 st.write("=========================================================================")
