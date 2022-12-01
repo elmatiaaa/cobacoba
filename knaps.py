@@ -16,7 +16,7 @@ from sklearn.svm import SVC
 
 
 st.write(""" 
-# Project Data Mining
+# Project Penambangan Data
 """)
 
 st.write("=========================================================================")
