@@ -101,22 +101,7 @@ with tab3:
     if des :
         if mod :
             st.write("Model Decision Tree accuracy score : {0:0.2f}" . format(akurasiii))
-    
-    eval = st.button("Evaluasi semua model")
-    if eval :
-        # st.snow()
-        source = pd.DataFrame({
-            'Nilai Akurasi' : [akurasi,skor_akurasi,akurasiii],
-            'Nama Model' : ['Naive Bayes','KNN','Decision Tree']
-        })
-
-        bar_chart = alt.Chart(source).mark_bar().encode(
-            y = 'Nilai Akurasi',
-            x = 'Nama Model'
-        )
-
-        st.altair_chart(bar_chart,use_container_width=True)
-        
+   
 with tab4:
     st.write("# Implementation")
     fixed_acidity = st.text_input('fixed acidity :')
